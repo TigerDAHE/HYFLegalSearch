@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>法律问答 AgenticSearch</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <main class="shell">
+      <header class="hero">
+        <p class="eyebrow">中国大陆法 · AgenticSearch</p>
+        <h1>法律问答最小可用版</h1>
+        <p class="subtitle">法律实体提取 + 首轮联网检索 + Router分流 + 证据引用</p>
+      </header>
+
+      <section class="panel controls">
+        <label for="model">模型（LiteLLM 路由）</label>
+        <input id="model" placeholder="例如 openai/gpt-4o-mini" />
+      </section>
+
+      <section id="chat" class="panel chat"></section>
+
+      <form id="chat-form" class="panel composer">
+        <textarea id="question" placeholder="请输入法律问题，例如：劳动合同未签订双倍工资如何计算？" required></textarea>
+        <button type="submit">发送</button>
+      </form>
+    </main>
+
+    <template id="message-template">
+      <article class="message">
+        <div class="meta"></div>
+        <div class="content"></div>
+      </article>
+    </template>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>

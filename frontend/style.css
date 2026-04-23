@@ -1,0 +1,166 @@
+:root {
+  --bg-a: #f5efe0;
+  --bg-b: #dce8d8;
+  --surface: #fffcf6;
+  --ink: #1f2a1f;
+  --ink-soft: #4a5b4d;
+  --line: #b9c8b6;
+  --accent: #2b5f3b;
+  --accent-2: #8f3b2b;
+  --radius: 18px;
+  --shadow: 0 14px 40px rgba(31, 42, 31, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", serif;
+  background: radial-gradient(circle at 15% 20%, var(--bg-a), transparent 45%),
+    radial-gradient(circle at 85% 10%, #e7d8c9, transparent 35%),
+    linear-gradient(140deg, var(--bg-b), #f0f5eb 60%, #ece6d9);
+  min-height: 100vh;
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(to right, rgba(43, 95, 59, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(43, 95, 59, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(circle at center, black, transparent 78%);
+}
+
+.shell {
+  width: min(920px, 92vw);
+  margin: 3rem auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  margin-bottom: 1.2rem;
+  animation: rise 0.6s ease;
+}
+
+.eyebrow {
+  color: var(--accent-2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+h1 {
+  margin: 0.2rem 0;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.panel {
+  background: color-mix(in oklab, var(--surface) 88%, white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.controls {
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.8rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.controls input,
+.composer textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.65rem 0.8rem;
+  font: inherit;
+  background: #fffefb;
+}
+
+.chat {
+  min-height: 280px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.message {
+  border: 1px solid color-mix(in oklab, var(--line) 80%, white);
+  border-radius: 14px;
+  padding: 0.8rem;
+  background: #fff;
+  animation: rise 0.35s ease;
+}
+
+.message.user {
+  border-left: 5px solid var(--accent-2);
+}
+
+.message.assistant {
+  border-left: 5px solid var(--accent);
+}
+
+.meta {
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.content {
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.composer {
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+button {
+  justify-self: end;
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1.2rem;
+  font: inherit;
+  color: white;
+  background: linear-gradient(120deg, var(--accent), #3c7f4e);
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.06);
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .shell {
+    margin: 1.1rem auto 2rem;
+  }
+
+  .chat {
+    min-height: 220px;
+  }
+}
